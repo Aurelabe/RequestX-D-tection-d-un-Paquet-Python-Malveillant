@@ -112,4 +112,3 @@ En complément, un autre risque fréquent est le **typosquatting** : un attaquan
 
 Ce projet met en évidence la facilité avec laquelle un paquet Python peut être compromis, et l’importance d’outils d’analyse automatisés et isolés pour renforcer la sécurité de la chaîne d’approvisionnement logicielle.
 
-```
