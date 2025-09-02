@@ -7,8 +7,8 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 PACKAGE_NAME=$1
-MISTRAL_HOST="100.79.39.61"
-MISTRAL_PORT="11434"
+MISTRAL_HOST="ip.host"
+MISTRAL_PORT="port.host"
 
 if [ -z "$PACKAGE_NAME" ]; then
   echo "Usage: $0 <nom_du_package>"
