@@ -19,7 +19,7 @@ L’objectif de ce projet est de :
 Le paquet **`requestx`** a été conçu pour imiter une librairie Python utile.  
 Derrière cette façade légitime, son fichier principal contient du code malveillant qui exfiltre les variables d’environnement vers un serveur externe.
 
-Disponible sur [TestPyPI](https://test.pypi.org/project/requestx/)
+Disponible sur [TestPyPI_requestx](https://test.pypi.org/project/requestx/)
 
 - **Code malveillant :**
 
@@ -46,7 +46,7 @@ Afin de valider l’efficacité de l’outil d’analyse, un second paquet a ét
 Celui-ci ne contient **aucune fonctionnalité malveillante**.
 Son rôle est uniquement de démontrer que l’analyse fait correctement la distinction entre un paquet compromis et un paquet sain.
 
-Disponible sur [TestPyPI](https://test.pypi.org/project/requestx-safe/)
+Disponible sur [TestPyPI_requestx_safe](https://test.pypi.org/project/requestx-safe/)
 
 
 ---
